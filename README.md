@@ -30,5 +30,12 @@ forced_leveling: true ## change this to false
 
 ### M3DP Configuration
 
-- [Add Screws Tilt Adjust](https://github.com/jamincollins/k2-improvements/blob/main/features/screws_tilt_adjust/screws_tilt_adjust.cfg)
-- [Add updated Start Code]()
+- **Add Screws Tilt Adjust**: Integration of the [Screws Tilt Adjust](https://github.com/jamincollins/k2-improvements/blob/main/features/screws_tilt_adjust/screws_tilt_adjust.cfg) feature.
+- **Optimized Print Start Macro (`START_PRINT_M3DP`)**:
+  - **Concurrent Heating**: Heats the bed, chamber, and extruder to wait-temp simultaneously to dramatically reduce print start times.
+  - **Efficiency**: Removed redundant nozzle wiping and extra Z-homing routines.
+  - **Adaptive Meshing**: Supports `ADAPTIVE=1` parameter to enable native adaptive bed meshing in Klipper.
+  - **Heat Bump**: Supports `HEAT_BUMP=1` parameter to temporarily overshoot the bed temperature by 5°C, accelerating the chamber heating process for high-temp materials like ABS/ASA.
+- **Improved Manual Leveling Macros**: 
+  - Custom tramming macros (`A_1_LEFT_FRONT`, etc.) that heat the nozzle to a safe `wait_temperature` (140°C) instead of full print temp, completely eliminating filament ooze during leveling.
+- **OrcaSlicer Integration**: Check `OrcaSlicer-GCode.md` for the optimized slicer configurations.
