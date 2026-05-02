@@ -2,7 +2,7 @@
 
 Repo to test my ideas for improving the leveling and print start for the Creality K2.
 
-**Firmware Compatibility**: Tested and compatible with Creality K2 Firmware `v1.1.4.11`
+**Firmware Compatibility**: Tested and compatible with Creality K2 Firmware `v1.1.5.2`
 
 ## Reasoning
 
@@ -57,7 +57,7 @@ Final: Tn_retrude: -20
 
 ### M3DP Configuration
 
-- **Add Screws Tilt Adjust**: Integration of the [Screws Tilt Adjust](https://github.com/jamincollins/k2-improvements/blob/main/features/screws_tilt_adjust/screws_tilt_adjust.cfg) feature.
+- **Screws Tilt Adjust**: Integration of the [Screws Tilt Adjust](https://github.com/jamincollins/k2-improvements/blob/main/features/screws_tilt_adjust/screws_tilt_adjust.cfg) feature. *(Note: This feature is currently commented out as it is not supported natively in firmware v1.1.5.2).*
 - **Optimized Print Start Macro (`START_PRINT_M3DP`)**:
   - **Concurrent Heating**: Heats the bed, chamber, and extruder to wait-temp simultaneously to dramatically reduce print start times.
   - **Efficiency**: Removed redundant nozzle wiping and extra Z-homing routines.

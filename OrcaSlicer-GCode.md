@@ -2,11 +2,11 @@
 ```
 ; OrcaSlicer auto-heating suppression:
 ; M190 S[bed_temperature_initial_layer_single]
-; M109 S[nozzle_temperature_initial_layer]
+; M109 S[nozzle_temperature_initial_layer[initial_tool]]
 M140 S0
 M104 S0
-START_PRINT_M3DP EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single] CHAMBER_TEMP=[chamber_temperature] ADAPTIVE=1 HEAT_BUMP={if filament_type[initial_no_support_extruder]=~/.*(ABS|ASA).*/i or filament_name[initial_no_support_extruder]=~/.*(ABS|ASA).*/i}1{else}0{endif} PRINT_MIN={first_layer_print_min[0]},{first_layer_print_min[1]} PRINT_MAX={first_layer_print_max[0]},{first_layer_print_max[1]}
-T[initial_no_support_extruder]
+START_PRINT_M3DP EXTRUDER_TEMP=[nozzle_temperature_initial_layer[initial_tool]] BED_TEMP=[bed_temperature_initial_layer_single] CHAMBER_TEMP=[chamber_temperature[initial_tool]] ADAPTIVE=1 FILAMENT_TYPE="{filament_type[initial_tool]}" PRINT_MIN={first_layer_print_min[0]},{first_layer_print_min[1]} PRINT_MAX={first_layer_print_max[0]},{first_layer_print_max[1]}
+T[initial_tool]
 M204 S2000
 G1 Z3 F600
 M83
