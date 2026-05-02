@@ -24,6 +24,31 @@ I really, really want to have to root my printer. Rooting has implications to th
 forced_leveling: true ## change this to false
 ```
 
+[Enable Adaptive Meshing (Fix internal error on BED_MESH_CALIBRATE)]() - in `printer.cfg`, make the following two changes:
+1. Under the `[prtouch_v3]` section, change `enable_not_linear_comp` to `False`:
+```bash
+enable_not_linear_comp:False # changed from True to allow dynamic adaptive mesh counts
+```
+2. Under the `[bed_mesh]` section, change `probe_count` to `5,5`:
+```bash
+probe_count:5,5 # changed from 9,9 to speed up probing and satisfy PRTouch spiral probing
+```
+
+### DXC2 Extruder Changes
+
+Go to the Configuration interface, find and open the
+gcode_macro.cfg file.
+Locate [gcode_macro QUIT_MATERIAL_RETRUDE_MATERIAL]
+and change the retraction speed to E-40 (as shown in the
+diagram).
+Click Save & Restart in the top-right corner
+
+Find and open the box.cfg file.
+Locate [box] and modify Tn_retrude to -20.
+Comment out the original value by adding # in front (e.g.,
+#Tn_retrude: -10). Commented lines will turn gray.
+Final: Tn_retrude: -20
+
 ### Off Printer Fixes
 
 [Creality Print Data Transfer](https://github.com/orgs/CrealityOfficial/discussions/126#discussioncomment-13184323) - use OctoPrint/Klipper protocol rather than CrealityPrint protocol

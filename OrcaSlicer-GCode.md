@@ -1,8 +1,11 @@
 # Machine Start G-Code:
 ```
+; OrcaSlicer auto-heating suppression:
+; M190 S[bed_temperature_initial_layer_single]
+; M109 S[nozzle_temperature_initial_layer]
 M140 S0
-M104 S0 
-START_PRINT_M3DP EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single] CHAMBER_TEMP=[chamber_temperature] ADAPTIVE=1 HEAT_BUMP=0
+M104 S0
+START_PRINT_M3DP EXTRUDER_TEMP=[nozzle_temperature_initial_layer] BED_TEMP=[bed_temperature_initial_layer_single] CHAMBER_TEMP=[chamber_temperature] ADAPTIVE=1 HEAT_BUMP={if filament_type[initial_no_support_extruder]=~/.*(ABS|ASA).*/i or filament_name[initial_no_support_extruder]=~/.*(ABS|ASA).*/i}1{else}0{endif} PRINT_MIN={first_layer_print_min[0]},{first_layer_print_min[1]} PRINT_MAX={first_layer_print_max[0]},{first_layer_print_max[1]}
 T[initial_no_support_extruder]
 M204 S2000
 G1 Z3 F600
@@ -13,6 +16,7 @@ G1 Z0.2 F600
 G1 X0 Y0 E15 F6000
 G1 X150 Y0 E15 F6000
 G92 E0
+G1 E-0.5 F2400 ; Snap retraction to prevent stringing
 G1 Z1 F600
 ```
 
