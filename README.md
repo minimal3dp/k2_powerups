@@ -1,6 +1,8 @@
 # Creality K2 Plus Powerups
 
-Repo to test my ideas for improving the leveling and print start for the Creality K2
+Repo to test my ideas for improving the leveling and print start for the Creality K2.
+
+**Firmware Compatibility**: Tested and compatible with Creality K2 Firmware `v1.1.4.11`
 
 ## Reasoning
 
